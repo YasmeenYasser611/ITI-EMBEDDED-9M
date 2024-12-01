@@ -1,177 +1,64 @@
 # Yasmeen Yasser Mohamed
-# Task1_adminLinux :)
->1. Initialize a new repository named "ITI-EMBEDDED-9M."
+# Task2_adminLinux :)
+>Question 1: Using VI editor only!!!!
 
-![clone repo](photos/1.png
+* Implement the binary search algorithm inside the binary_search function.
+Ensure that it returns the index of the searched element or -1 if the element is
+not present.
+* In the main function, declare an array and an element to search. Call the
+binary search function with appropriate arguments.
+* Make sure to print the output of the search using printf()
+* Compile and run your program to verify the correctness of your binary
+search implementation.
+
+![](pics/1.png
 "repo cloning")
 
->2. Create a branch named "Task1_adminLinux."
->3. Inside the repository, create a directory called "AdminLinux_Task1."
+![](pics/2.png
+"repo cloning")
+![](pics/3.png
+"repo cloning")
+
+>2. Question 2:
+
+* Move the binary file output to the directory /usr/local/bin with sudo permissions.
+Afterward, attempt to execute the binary from any working directory and explain the
+outcome. Provide a detailed explanation supported by evidence as to why the
+binary can be executed from any location.
+
+![](pics/4.png
+"repo cloning")
+
+     By moving the binary file to /usr/local/bin, you ensure that it can be executed from any directory, as long as /usr/local/bin is in PATH environment variable. This is for handle executable files and allows users to run commands from anywhere without needing to navigate to the specific directory where the executable is stored.
+
+# Na2na2a:
+>List the available shells in your system.
+
+![](pics/5.png
+"repo cloning")
+
+>List the environment variables in your current shell.
 
 
-![create branch and make directory](photos/2.png
-"")
+![](pics/6.png
+"repo cloning")
 
->4. Within "AdminLinux_Task1," create a file and add your script to it.
+>Display your current shell name.
 
-![create bash script](photos/4.png
-"")
+![](pics/7.png
+"repo cloning")
 
->5. Commit the changes.
->6. Push the changes to the remote repository.
+>Execute the following command :
+echo \ then press enter
+What is the purpose of \ ?
 
-![commit changes](photos/5.png
-"")
+![](pics/8.png
+"repo cloning")
 
-![push changes](photos/6.png
-"")
+ 
+    The \ in echo \ is an escape character, which in this case causes the echo command to print nothing and just move to the next line, resulting in an empty output.
 
->7. Merge the changes into the main branch.
+>Create a Bash shell alias named PrintPath for the “echo $PATH” command
 
-![merge changes](photos/3.png
-"")
-
->List three Linux Distributions.
-
-* Ubuntu
-* debian
-* archlinux
->From the slides what is the man command used for?
-
-
-~~System-wide documentation system that provides short reference manuals (pages) for individual
-commands, API functions, concepts, configuration file syntax, file formats and is organized in sections
-(1 for user commands, 2 for system calls...). That's the traditional Unix documentation system.~~
-
-man command is used to get the help of any external command .
-
->What is the difference between rm and rmdir using man command?
-
-rm is for remove file or directory
-
-![rm command](photos/12.png
-"")
-
-rmdir is for remove only  emptty direcories
-
-![rmdir command](photos/13.png
-"")
-
->Create the following hierarchy under your home directory:
-
-![dir1 folder](photos/14.png
-"")
-
-![docs folder](photos/15.png
-"")
-
-![Documents folder](photos/16.png
-"")
-
->Remove dir11 with rmdir in one-step. What did you notice? And how did you
-overcome that?
-
-we cannot use rmdir because file is not empty so we use rm 
-
-![rm dir11](photos/17.png
-"")
-
->remove OldFiles using rmdir –p command. State what happened to the
-hierarchy (Note: you are in your home directory).
-
-The command rmdir -p  is used to remove directories, and the -p flag allows it to remove parent directories if they are empty. However, and OldFiles is actually a file rather than a directory, running this command will result in an error.
-
-![rm OldFiles](photos/18.png
-"")
-to solve it i used: 
->rm ~/Documents/OldFiles
-
->The output of the command pwd was /home/yasmeen. Write the absolute and
-relative path for the file mycv
-
-Absolute Path: /home/yasmeen/docs
-
-Relative Path: docs
-
-![pwd](photos/19.png
-"")
-
->Copy the /etc/passwd file to your home directory making its name is mypasswd
-
-![password](photos/20.png
-"")
->Rename this new file to be oldpasswd
-
-![old password](photos/21.png
-"")
-
->You are in /usr/bin, list four ways to go to your home directory
-
-* cd ~
-* cd 
-*
-   * cd ..
-   * cd ..
-   * cd home 
-
-*
-    * cd /
-    * cd home
-
->List Linux commands in /usr/bin that start with letter w
-
-![ls](photos/22.png
-"")
-
->What command type are used for? (from the slide)
-
-![ls](photos/23.png
-"")
-
->Show 2 types of command file in /usr/bin that start with letter c
-
-![ls](photos/25.png
-"")
-
->Using man command find the command to read file. (Note: man take option)
-
-![ls](photos/26.png
-"")
-
->What is the usage of apropos command?
-
-the apropos command in Linux is used to search the manual page database for a keyword 
-
-![ls](photos/27.png
-"")
-
-# the bash script :
-#!/bin/bash
-
-#### 1. Create a directory called "myDirectory" in home folder.
-mkdir ~/myDirectory
-
-#### 2. Inside "myDirectory," create another directory named "secondDirectory."
-mkdir ~/myDirectory/secondDirectory
-
-#### 3. Within "secondDirectory," create a file named "myNotePaper."
-touch ~/myDirectory/secondDirectory/myNotePaper
-
-#### 4. Copy "myNotePaper" from "secondDirectory" to "myDirectory."
-cp ~/myDirectory/secondDirectory/myNotePaper ~/myDirectory/
-
-#### 5. Rename the copied file in "myDirectory" to "myOldNotePaper."
-mv ~/myDirectory/myNotePaper ~/myDirectory/myOldNotePaper
-
-echo "Script completed successfully!"
-
-![](photos/7.png
-"")
-![](photos/8.png
-"")
-![](photos/9.png
-"")
-![](photos/10.png
-"")
-![](photos/11.png
-"")
+![](pics/9.png
+"repo cloning")
