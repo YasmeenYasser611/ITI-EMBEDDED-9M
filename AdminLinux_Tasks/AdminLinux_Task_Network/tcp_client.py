@@ -1,8 +1,8 @@
 import socket
 
 # Server details
-HOST = '10.145.25.84'  # Replace with the server's IP address
-PORT = 5000          # Same port as the server
+HOST = '10.145.24.78'  # Replace with the server's IP address
+PORT = 9001         # Same port as the server
 
 # Create a socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
