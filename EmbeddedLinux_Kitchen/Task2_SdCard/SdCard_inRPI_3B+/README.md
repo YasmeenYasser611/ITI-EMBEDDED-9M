@@ -1,5 +1,5 @@
 # Yasmeen Yasser Mohamed
-# EmbeddedLinuxKitchen_Task2_emulatedsd card:)
+# EmbeddedLinuxKitchen_Task2_sd card with rpi 3 B +:)
 
 
 ![](1.png "")
