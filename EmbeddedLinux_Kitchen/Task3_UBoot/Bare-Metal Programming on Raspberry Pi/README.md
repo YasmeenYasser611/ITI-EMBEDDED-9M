@@ -77,9 +77,6 @@ SECTIONS {
 
 
 #### 3. **start up code  Implementation**
-- The program must be loaded at a specific memory address in DRAM.
-- Avoid using the very first address of DRAM (0x00000000) because it may interfere with U-Boot.
-- A linker script is required to correctly position the `.text`, `.data`, and `.bss` sections in memory.
 
 ```c
 .global _start
