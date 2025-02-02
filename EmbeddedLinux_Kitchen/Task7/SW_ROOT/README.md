@@ -50,8 +50,6 @@ mount --move /proc /newroot/proc
 mount --move /sys /newroot/sys
 mount --move /dev /newroot/dev
 
-exec switch_root -c /newroot/dev/console /newroot /bin/sh
-
 
 ![](7.png "")
 
