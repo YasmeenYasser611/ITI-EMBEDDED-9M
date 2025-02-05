@@ -1,0 +1,28 @@
+# Define memory addresses
+setenv loadaddr 0x8000  # Address where zImage will be loaded
+
+# Step 1: Check if zImage exists and load it
+if fatinfo mmc 0:1 zImage; then
+    echo "zImage exists on SD card. Loading it...";
+    fatload mmc 0:1 ${loadaddr} zImage;
+    md ${loadaddr}
+else
+    echo "zImage does not exist on SD card. Trying TFTP...";
+
+    # Step 2: Try to load zImage from TFTP
+    if tftp ${loadaddr} zImage; then
+        md ${loadaddr} ;
+        echo "zImage successfully loaded from TFTP.";
+    else
+        echo "Failed to get zImage from TFTP. Loading yasmeen file from SD card which will open gpio2 led on...";
+
+        # Step 3: Load fallback file 'yasmeen' from the SD card
+        if fatload mmc 0:1 ${loadaddr} yasmeen; then
+            go ${loadaddr}
+            echo "yasmeen file loaded successfully gpio2 turned on .";
+        else
+            echo "Failed to load yasmeen file from SD card.";
+        fi
+    fi
+fi
+
