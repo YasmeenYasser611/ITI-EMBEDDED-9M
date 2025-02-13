@@ -1,0 +1,13 @@
+[Unit]
+Description=Caps Lock Monitor Service
+After=multi-user.target
+
+[Service]
+ExecStart=/home/yasmeen/ITI_9M_EMBEDDED_systems/ITI-EMBEDDED-9M/EmbeddedLinux_Kitchen/Task8_Systemd/service_monitoring_capsLOck/capslock_monitor.sh
+Restart=always
+User=yasmeen
+
+
+[Install]
+WantedBy=multi-user.target
+
