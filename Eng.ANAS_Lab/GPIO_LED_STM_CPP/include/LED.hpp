@@ -11,6 +11,7 @@ private:
     void enableRCC(); // Function to manually enable RCC for the port
     
 public:
+    LED();
     LED(Port port, Pin pin);  // Constructor
 
     void init();    // Initialize LED (Enable RCC and set pin mode)

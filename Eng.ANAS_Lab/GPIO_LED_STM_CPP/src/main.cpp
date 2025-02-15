@@ -1,21 +1,35 @@
 #include "LED.hpp"
 
-int main() 
-{
-    LED led(GPIO::GPIO_A, GPIO::PIN5);
-    LED led2(GPIO::GPIO_B, GPIO::PIN0);
-    
-    // Turn the LED on
-    led.turnOn();
-    led2.turnOn();
-    while (1) 
-    {
-        // Toggle LED every second 
-        led.toggle();
-        led2.toggle();
-        for (volatile int i = 0; i < 1000000; i++); // delay for second 
-    }
-    
-    return 0;
+void delay() {
+    for (volatile int i = 0; i < 1000000; i++); // Simple delay for 1 second 
 }
 
+int main() 
+{
+
+    LED red(GPIO::GPIO_A, GPIO::PIN5);   // Red LED on PA5
+    LED yellow(GPIO::GPIO_A, GPIO::PIN6); // Yellow LED on PA6
+    LED green(GPIO::GPIO_A, GPIO::PIN7);  // Green LED on PA7
+    while (1) 
+    {
+        // Red Light (Stop)
+        red.turnOn();
+        yellow.turnOff();
+        green.turnOff();
+        delay();
+
+        // Yellow Light (Get Ready)
+        red.turnOff();
+        yellow.turnOn();
+        green.turnOff();
+        delay();
+
+        // Green Light (Go)
+        red.turnOff();
+        yellow.turnOff();
+        green.turnOn();
+        delay();
+    }
+
+    return 0;
+}

@@ -11,7 +11,8 @@ public:
         GPIO_C = 2,
         GPIO_D = 3,
         GPIO_E = 4,
-        GPIO_H = 5
+        GPIO_H = 5,
+        INVALID_PORT = -1 // Explicit invalid value
     };
 
     enum Pin {
@@ -30,7 +31,8 @@ public:
         PIN12, 
         PIN13, 
         PIN14, 
-        PIN15
+        PIN15,
+        INVALID_PIN = -1 // Explicit invalid value
     };
 
     enum Mode {
@@ -45,7 +47,7 @@ public:
         LOW = 0,
         HIGH = 1
     };
-
+    GPIO();
     GPIO(Port port, Pin pin);
     void setMode(Mode mode);
     void write(Value value);

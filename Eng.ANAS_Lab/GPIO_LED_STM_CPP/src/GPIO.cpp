@@ -2,9 +2,16 @@
 #include "GPIO.hpp"
 #include "GPIO_Private.h"
 
+GPIO::GPIO() : port(INVALID_PORT), pin(INVALID_PIN) 
+{
+    //Invalid GPIO configuration! Use parameterized constructor.
+    //port=-1
+    //pin=-1
+}
+
 GPIO::GPIO(Port port, Pin pin) : port(port), pin(pin) 
 {
-
+     // Valid GPIO initialization
 }
 
 void GPIO::setMode(Mode mode) 
