@@ -1,0 +1,3 @@
+/home/yasmeen/storage/yocto/meta-Tasks/recipes-hello/hello/ITI/build/CMakeFiles/hello.dir
+/home/yasmeen/storage/yocto/meta-Tasks/recipes-hello/hello/ITI/build/CMakeFiles/edit_cache.dir
+/home/yasmeen/storage/yocto/meta-Tasks/recipes-hello/hello/ITI/build/CMakeFiles/rebuild_cache.dir
