@@ -1,0 +1,20 @@
+[Unit]
+Description=Caps Lock Light Controller
+Documentation=https://github.com/YasmeenYasser611/ITI_9M_QT/tree/main/CapsLock_Task3
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/appcaosLock
+Restart=on-failure
+
+# Running as root, change if needed
+User=root
+Group=root
+
+# Set environment variables for Qt on Wayland
+Environment="XDG_RUNTIME_DIR=/run/user/1001"
+Environment="QT_QPA_PLATFORM=wayland"
+Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="QT_PLUGIN_PATH=/usr/lib/plugins"
+[Install]
+WantedBy=multi-user.target

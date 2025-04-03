@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/004_ChrDevice_dev/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/yasmeen/deviceDriver/004_ChrDevice_dev/Module.symvers -T /home/yasmeen/deviceDriver/004_ChrDevice_dev/modules.order -i Module.symvers -e 

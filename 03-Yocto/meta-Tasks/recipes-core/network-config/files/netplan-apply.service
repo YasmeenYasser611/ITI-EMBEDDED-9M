@@ -1,0 +1,13 @@
+[Unit]
+Description=Reapply Netplan Configuration on Network Changes
+After=network-pre.target network.target
+Wants=network-pre.target network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/sbin/ip addr flush dev eth0
+ExecStart=/usr/sbin/netplan apply
+RemainAfterExit=yes
+
+[Install]
+WantedBy=network-online.target

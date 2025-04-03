@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/004_ChrDevice_dev/mydriver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/yasmeen/deviceDriver/004_ChrDevice_dev/mydriver.ko /home/yasmeen/deviceDriver/004_ChrDevice_dev/mydriver.o /home/yasmeen/deviceDriver/004_ChrDevice_dev/mydriver.mod.o

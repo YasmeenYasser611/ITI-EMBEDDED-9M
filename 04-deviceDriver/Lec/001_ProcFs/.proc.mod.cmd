@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/001_ProcFs/proc.mod := printf '%s\n'   proc.o | awk '!x[$$0]++ { print("/home/yasmeen/deviceDriver/001_ProcFs/"$$0) }' > /home/yasmeen/deviceDriver/001_ProcFs/proc.mod

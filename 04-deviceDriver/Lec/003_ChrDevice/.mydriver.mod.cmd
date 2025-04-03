@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/003_ChrDevice/mydriver.mod := printf '%s\n'   mydriver.o | awk '!x[$$0]++ { print("/home/yasmeen/deviceDriver/003_ChrDevice/"$$0) }' > /home/yasmeen/deviceDriver/003_ChrDevice/mydriver.mod

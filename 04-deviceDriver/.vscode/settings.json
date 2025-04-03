@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "proc_fs.h": "c",
+        "init.h": "c",
+        "module.h": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "fs.h": "c",
+        "cdev.h": "c",
+        "device.h": "c"
+    }
+}

@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/001_ProcFs/proc.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/yasmeen/deviceDriver/001_ProcFs/proc.ko /home/yasmeen/deviceDriver/001_ProcFs/proc.o /home/yasmeen/deviceDriver/001_ProcFs/proc.mod.o

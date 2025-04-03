@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/ITI_9M_EMBEDDED_systems/ITI-EMBEDDED-9M/deviceDriver/003_ChrDeviceAssignment/mydriver.mod := printf '%s\n'   mydriver.o | awk '!x[$$0]++ { print("/home/yasmeen/ITI_9M_EMBEDDED_systems/ITI-EMBEDDED-9M/deviceDriver/003_ChrDeviceAssignment/"$$0) }' > /home/yasmeen/ITI_9M_EMBEDDED_systems/ITI-EMBEDDED-9M/deviceDriver/003_ChrDeviceAssignment/mydriver.mod
