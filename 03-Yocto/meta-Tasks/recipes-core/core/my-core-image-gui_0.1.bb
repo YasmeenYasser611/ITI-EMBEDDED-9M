@@ -24,7 +24,7 @@ IMAGE_INSTALL:append = " qtbase qtdeclarative qttools qtmultimedia qtquick3d qtw
 IMAGE_INSTALL:append = " example hello hellobash calculator"
 
 # Additional modules and tools 
-IMAGE_INSTALL:append = "  vsomeiplibrary ledcontrol-mod ledcontrol-driver"
+IMAGE_INSTALL:append = "  vsomeiplibrary ledcontrol-mod ledcontrol-driver ledcontrol-platformdd1"
 
 
 

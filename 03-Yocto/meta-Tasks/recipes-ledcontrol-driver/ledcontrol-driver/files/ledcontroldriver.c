@@ -37,6 +37,7 @@ struct prvt_device_resource {
     struct gpio gpio;
     int perm;
     struct cdev _cdev;
+    struct device* _device;
 };
 
 /* To create character device driver */
@@ -83,7 +84,7 @@ int open_callback(struct inode *inode, struct file *file) {
     
     lc_dev_res = container_of(inode->i_cdev, struct prvt_device_resource, _cdev);
     
-    /* Assign the memory field to look at its own resource [device] */
+    
     file->private_data = lc_dev_res;
 
     printk("my uid: %d\n", inode->i_uid.val);
@@ -96,7 +97,6 @@ static ssize_t read_callback(struct file *file, char __user *user, size_t size, 
     struct prvt_device_resource *private = (struct prvt_device_resource *)file->private_data;
     printk("shared read\n");
 
-    // Read the GPIO state (we'll read from GPIO2)
     int gpio2_state = ioread32(private->gpio.gpset);
     printk("GPIO2 state: %d\n", gpio2_state);
 

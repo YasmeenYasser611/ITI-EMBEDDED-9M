@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/006_platform/modules.order := {   echo /home/yasmeen/deviceDriver/006_platform/device.o;   echo /home/yasmeen/deviceDriver/006_platform/driver.o; :; } > /home/yasmeen/deviceDriver/006_platform/modules.order

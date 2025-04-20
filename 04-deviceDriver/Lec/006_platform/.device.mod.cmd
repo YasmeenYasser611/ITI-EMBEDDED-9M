@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/006_platform/device.mod := printf '%s\n'   device.o | awk '!x[$$0]++ { print("/home/yasmeen/deviceDriver/006_platform/"$$0) }' > /home/yasmeen/deviceDriver/006_platform/device.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/yasmeen/deviceDriver/006_platform/device.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/yasmeen/deviceDriver/006_platform/device.ko /home/yasmeen/deviceDriver/006_platform/device.o /home/yasmeen/deviceDriver/006_platform/device.mod.o
