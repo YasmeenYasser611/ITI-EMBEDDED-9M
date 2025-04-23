@@ -11,7 +11,33 @@ inherit qt6-cmake qt6-paths
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase qtdeclarative-native qtmultimedia qtwayland "
+DEPENDS += " \
+    qtbase \
+    qtdeclarative-native \
+    qtmultimedia \
+    qtwayland \
+    qtlocation \
+    qtpositioning \
+    qtquick3d \
+    qtquicktimeline \
+    qttools \
+    qtapplicationmanager-native \
+"
 
-RDEPENDS:${PN}="qtbase  qtmultimedia qtwayland "
-# FILES_${PN}:append = " ${bindir}"
+RDEPENDS:${PN} += " \
+    qtbase \
+    qtdeclarative \
+    qtmultimedia \
+    qtwayland \
+    qtlocation \
+    qtpositioning \
+    qtquick3d \
+    qtquicktimeline \
+    qttools \
+    qtapplicationmanager \
+"
+
+FILES_${PN}:append = " ${bindir}"
+APP_NAME="Qt-App-LED"
+
+

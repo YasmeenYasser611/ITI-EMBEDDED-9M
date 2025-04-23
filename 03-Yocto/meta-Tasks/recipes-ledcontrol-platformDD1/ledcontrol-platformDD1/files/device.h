@@ -3,7 +3,8 @@
 
 #include <linux/io.h>
 
-struct gpio {
+struct gpio 
+{
     void __iomem *gpset;
     void __iomem *gpclr;
     void __iomem *gpfsels;

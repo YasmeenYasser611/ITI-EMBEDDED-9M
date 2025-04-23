@@ -18,7 +18,7 @@ IMAGE_FEATURES = "splash ssh-server-dropbear weston package-management"
 IMAGE_INSTALL:append = " bash sudo tcpdump vim make freerdp netplan static-ip "
 
 # Qt and UI-related packages 
-IMAGE_INSTALL:append = " qtbase qtdeclarative qttools qtmultimedia qtquick3d qtwayland wayland weston-init connman-client myuiqt" 
+IMAGE_INSTALL:append = " wayland weston-init connman-client myuiqt" 
 
 # Example applications
 IMAGE_INSTALL:append = " example hello hellobash calculator"
