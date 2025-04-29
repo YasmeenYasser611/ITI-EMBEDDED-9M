@@ -8,6 +8,8 @@
 #include <linux/io.h>
 #include <linux/mod_devicetable.h>
 #include "device.h"
+#include<linux/sysfs.h>
+#include<linux/stat.h>
 
 #define NO_ENTRIES 2
 #define GPIO_BASE  0x3F200000
@@ -22,6 +24,35 @@
 static ssize_t read_callback(struct file *, char __user *, size_t, loff_t *);
 static ssize_t write_callback(struct file *, const char __user *, size_t, loff_t *);
 static int open_callback(struct inode *, struct file *);
+
+
+/************************************************************** */
+
+#define DIR_ATTR "dir" 
+#define VALUE_ATTR "val"
+static ssize_t dir_showFunction(struct device *dev, struct device_attribute *attr, char *buf);
+static ssize_t dir_storeFunction(struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
+static ssize_t val_showFunction(struct device *dev, struct device_attribute *attr, char *buf);
+static ssize_t val_storeFunction(struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
+
+// static DEVICE_ATTR(val, S_IRUGO | S_IWUSR, val_showFunction, val_storeFunction);
+struct device_attribute dir_attr = {
+    .attr = {
+        .mode = S_IRWXU | S_IRWXG | S_IRWXO,
+        .name = DIR_ATTR,
+    },
+    .show = dir_showFunction,
+    .store = dir_storeFunction
+};
+struct device_attribute val_attr = {
+    .attr = {
+        .mode = S_IRWXU | S_IRWXG | S_IRWXO,
+        .name = VALUE_ATTR,
+    },
+    .show = val_showFunction,
+    .store = val_storeFunction
+};
+/****************************************************************** */
 
 static const struct file_operations _fops = {
     .owner = THIS_MODULE,  // THIS IS CRUCIAL
@@ -51,6 +82,72 @@ static const struct platform_device_id _id_table[] = {
     { }
 };
 MODULE_DEVICE_TABLE(platform, _id_table);
+
+
+
+
+/**************************** */
+static ssize_t dir_showFunction(struct device *dev, struct device_attribute *attr, char *buf)
+{
+    struct prv_data_device *dev_data = dev_get_drvdata(dev);
+    u32 reg = ioread32(dev_data->gpio.gpfsels);
+    int dir = (reg >> (dev_data->led_pin * 3)) & 0x7;
+    return sprintf(buf, "%s\n", (dir == 1) ? "out" : "in");
+}
+
+static ssize_t dir_storeFunction(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+{
+    struct prv_data_device *dev_data = dev_get_drvdata(dev);
+    u32 reg;
+    
+    if (sysfs_streq(buf, "out")) {
+        reg = ioread32(dev_data->gpio.gpfsels);
+        reg &= ~(7 << (dev_data->led_pin * 3));
+        reg |= (1 << (dev_data->led_pin * 3));
+        iowrite32(reg, dev_data->gpio.gpfsels);
+        return count;
+    }
+    else if (sysfs_streq(buf, "in")) {
+        reg = ioread32(dev_data->gpio.gpfsels);
+        reg &= ~(7 << (dev_data->led_pin * 3));
+        iowrite32(reg, dev_data->gpio.gpfsels);
+        return count;
+    }
+    
+    return -EINVAL;
+}
+
+static ssize_t val_showFunction(struct device *dev, struct device_attribute *attr, char *buf)
+{
+    struct prv_data_device *dev_data = dev_get_drvdata(dev);
+    u32 reg = ioread32(dev_data->gpio.gpset);
+    int state = (reg >> dev_data->led_pin) & 1;
+    return sprintf(buf, "%d\n", state);
+}
+
+static ssize_t val_storeFunction(struct device *dev, struct device_attribute *attr, 
+                               const char *buf, size_t count)
+{
+    struct prv_data_device *dev_data = dev_get_drvdata(dev);
+    unsigned long val;
+    int ret;
+    
+    ret = kstrtoul(buf, 10, &val);
+    if (ret)
+        return ret;
+        
+    if (val) {
+        iowrite32(1 << dev_data->led_pin, dev_data->gpio.gpset);
+    } else {
+        iowrite32(1 << dev_data->led_pin, dev_data->gpio.gpclr);
+    }
+    
+    return count;
+}
+
+/********************** */
+
+
 
 /* File operation implementations */
 int open_callback(struct inode *inode, struct file *file) {
@@ -153,7 +250,21 @@ static int probeCbf(struct platform_device *pdev)
         cdev_del(&dev_data->_cdev);
         return ret;
     }
+
+/************************************ */
+    ret = device_create_file(dev_data->_device, &dir_attr);
+    if (ret) 
+    {
+        dev_err(&pdev->dev, "Failed to create dir attribute\n");
+    }
     
+    ret = device_create_file(dev_data->_device, &val_attr);
+    if (ret) 
+    {
+        dev_err(&pdev->dev, "Failed to create val attribute\n");
+    }
+/******************************** */
+
     platform_set_drvdata(pdev, dev_data);
     dev_info(&pdev->dev, "Probed GPIO%d\n", dev_data->led_pin);
     return 0;
@@ -163,6 +274,11 @@ static int removeCbf(struct platform_device *pdev)
 {
     struct prv_data_device *dev_data = platform_get_drvdata(pdev);
     
+    /*********************************** */
+    device_remove_file(dev_data->_device, &dir_attr);
+    device_remove_file(dev_data->_device, &val_attr);
+
+    /*********************************** */
     device_destroy(_prvtDrvData._class, _prvtDrvData.device_number + pdev->id);
     cdev_del(&dev_data->_cdev);
     dev_info(&pdev->dev, "Removed GPIO%d\n", dev_data->led_pin);

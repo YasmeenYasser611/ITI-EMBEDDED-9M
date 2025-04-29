@@ -24,7 +24,7 @@ IMAGE_INSTALL:append = " wayland weston-init connman-client myuiqt"
 IMAGE_INSTALL:append = " example hello hellobash calculator"
 
 # Additional modules and tools 
-IMAGE_INSTALL:append = "  vsomeiplibrary ledcontrol-mod ledcontrol-driver ledcontrol-platformdd1"
+IMAGE_INSTALL:append = "  vsomeiplibrary ledcontrol-mod ledcontrol-driver ledcontrol-platformdd1 uart-led"
 
 
 

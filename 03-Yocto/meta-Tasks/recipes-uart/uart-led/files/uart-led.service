@@ -1,0 +1,10 @@
+[Unit]
+Description=UART to GPIO LED Script
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/uart-led.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
